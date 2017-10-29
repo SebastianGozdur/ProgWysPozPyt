@@ -1,0 +1,213 @@
+'''class klasa:
+  def funkcja(self, zmienna):
+    print "wywolanie metody %s" % zmienna
+    self.funkcja2()
+    
+  def funkcja2(self):
+    print "funkcja 2"
+    
+obiekt = klasa()
+obiekt.funkcja("funkcja")'''
+
+'''class klasa:
+  atr1 = None
+  __atr2 = None
+  
+  def setAtr2(self, zmienna):
+    self.__atr2  =zmienna
+    
+  def setAtr3(self, zmienna):
+    self.atr3 = zmienna
+    
+  def add(self):
+    return self.atr1 + self.__atr2 + self.atr3
+    
+obiekt = klasa()
+obiekt.atr1 = 4 
+obiekt.setAtr2(5)
+obiekt.setAtr3(10)
+print obiekt.add()'''
+
+''''
+class samochod:
+  kolor = None
+  def setKolor(self, kolor):
+    self.kolor = kolor
+
+class osobowy(samochod):
+  marka = "mercedes"
+  
+sam = osobowy()
+sam.setKolor("czerwony")
+print samochod.kolor + ' ' + samochod.marka
+'''
+'''
+class A:
+  def __init__(self, zmienna):
+    self.zmienna = zmienna
+    
+    def __add__(self, other):
+      return self.zmienna + other.zmienna
+      
+a = A(5)
+b = A(8)
+
+print a + b'''
+
+##ZADANIE 1
+'''
+class liczbaZespolona:
+  a = None
+  b = None
+  
+  def __init__(self, a, b):
+    self.a = a
+    self.b = b
+
+  def __add__(self, other):
+    return liczbaZespolona(self.a + other.a, self.b + other.b)
+    
+  def __sub__(self, other):
+    return liczbaZespolona(self.a - other.b, self.b - other.b)
+    
+  def __mul__(self, other):
+    return liczbaZespolona(self.a * other.b, self.b * other.b)
+    
+  def __div__(self, other):
+    return liczbaZespolona(float(self.a) / other.b, float(self.b) / other.b)
+    
+  def __str__(self):
+    return str(self.a) + ' ' + str(self.b)
+    
+  def modul(self):
+    return (pow(self.a, 2) + pow(self.b,2))**(1/2)
+    
+  def __eq__(self, other):
+    return self.a == other.a and self.b == other.b
+    
+pierwsza = liczbaZespolona(4,2)
+druga = liczbaZespolona(3,5)
+
+print pierwsza + druga
+print pierwsza - druga
+print pierwsza * druga
+print pierwsza / druga
+print pierwsza
+
+print pierwsza.modul()
+print pierwsza == druga
+'''
+
+##ZADANIE 2
+'''
+import math
+class Punkt2D:
+  x = None
+  y = None
+  
+  def __init__(self, x, y):
+    self.x = x
+    self.y = y
+    
+  def oblicz(self, punkt):
+    return math.sqrt(pow(punkt.x - self.x,2) + pow(punkt.y - self.y, 2))
+      
+
+class Punkt3D(Punkt2D):
+  z = None
+  
+  def __init__(self, x, y, z):
+    self.z = z
+    super(Punkt3D, self).__init__(x,y)
+    
+  def oblicz(self, punkt):
+    
+    
+pierwszyPunkt = Punkt2D(1,4)
+drugiPunkt = Punkt2D(3,8)
+print(pierwszyPunkt.oblicz(drugiPunkt))
+'''
+
+##ZADANIE 3 
+
+class samochod:
+  marka = None
+  pojemnoscBaku = None
+  predkoscMaksymalna = None
+  zuzyciePaliwa = None #zuzycie w l/km
+  
+  def __init__(self, marka, pojemnoscBaku, predkoscMaksymalna, zuzyciePaliwa):
+    self.marka = marka
+    self.pojemnoscBaku = pojemnoscBaku
+    self.predkoscMaksymalna = predkoscMaksymalna
+    self.zuzyciePaliwa = zuzyciePaliwa
+  
+  #odleglosc w km
+  def jedz(self, predkosc, odleglosc):
+    if(predkosc <= predkoscMaksymalna):
+      print 'Jade z predkoscia ' + str(predkosc) + '/h'
+      print 'Ilosc paliwa to '+self.zuzyciePaliwa
+
+      if(predkosc < predkoscMaksymalna*0.3 || predkoscMaksymalna > predkoscMaksymalna*0.8)
+        print 'Ile razy trzeba tankowac '+ self.pojemnoscBaku/(float(zuzyciePaliwa*1.2)/100*odleglosc)
+      else
+        print 'Ile razy trzeba tankowac '+ self.pojemnoscBaku/(float(zuzyciePaliwa)/100*odleglosc)
+        
+class kabriolet(samochod):
+  otwartyDach = None
+  
+  def __init__(self, marka, pojemnoscBaku, predkoscMaksymalna, zuzyciePaliwa):
+    self.otwartyDach = False
+    super(samochod, self).__init__(marka, pojemnoscBaku, predkoscMaksymalna, zuzyciePaliwa)
+  
+  def zamknijDac(self):
+    self.otwartyDach = False
+  
+  def otworzDach(self):
+    self.otwartyDach = True
+      
+  def jedz(self, predkosc, odleglosc):
+    super(samochod, self).jedz(predkosc, odleglosc) * 1.15
+      
+      
+sam = kabriolet('Chevrolet',1000, 200, 4)
+sam.jedz(50, 300)
+      
+      
+      
+      
+      
+    
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
